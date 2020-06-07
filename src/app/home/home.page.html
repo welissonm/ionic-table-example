@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Table
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" id="container">
+  <ion-grid id="table">
+    <ion-row id="table-header">
+      <ion-col size-md>Nome</ion-col>
+      <ion-col size-md>Cargo</ion-col>
+      <ion-col size="2" size-md></ion-col>
+    </ion-row>
+    <ion-row *ngFor="let usuario of usuarios$ | async usuarios">
+      <ion-col size-md>
+        {{ usuario?.nome }}
+      </ion-col>
+      <ion-col size-md>
+        {{ usuario?.cargo }}
+      </ion-col>
+      <ion-col size-md>
+        <ion-button (click)="edit(usuario)">
+          <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
+        </ion-button>
+        <ion-button (click)="delete(usuario)" color="danger">
+          <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
